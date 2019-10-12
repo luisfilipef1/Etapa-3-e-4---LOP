@@ -1,0 +1,63 @@
+/*   
+  Equipe: 
+        Luís Filipe França de Souza - Subturma B (Líder)  
+        Etapa 1 e 2
+*/
+xcircle = 20;
+ycircle = 328;
+rcircle = 20;
+xo = 0;
+yo = 320;
+xo2 = 0
+yo2 = 310;
+
+xd = 0;
+yd = 0;
+estadoDisparo = false
+function setup() {
+  createCanvas(400, 400);
+}
+function draw() {
+  background(220);
+  line(0, 340, 400, 340);
+  circle (xcircle, ycircle, rcircle)
+  if (keyIsDown(LEFT_ARROW)) {
+    xcircle -= 1;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    xcircle += 1;
+  }
+
+  if (keyIsDown(UP_ARROW)) {
+    ycircle -= 5;
+  }
+
+  if (keyIsDown(DOWN_ARROW)) {
+    ycircle += 5;
+    rcircle = 15
+  }
+  else 
+      rcircle = 20
+  square (xo, yo, 5)
+  xo = xo - 4;
+  if (xo < 0){
+    xo = random(1000)
+  }
+  square (xo2, yo2, 5)
+  xo2 = xo2 - 5;
+  if (xo2 < 0){
+    xo2 = random(10000)
+  }
+  if ( keyIsDown (CONTROL) && estadoDisparo == false){
+    xd = xcircle;
+    yd = ycircle;
+    estadoDisparo = true
+  }  
+  if (estadoDisparo == true){
+    ellipse (xd, yd, 4, 4)
+    xd = xd + 10
+    if (xd > 400){
+      estadoDisparo = false
+    }
+} 
+}
